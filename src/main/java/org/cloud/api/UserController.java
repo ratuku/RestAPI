@@ -25,7 +25,7 @@ public class UserController {
     public List<UserDto> getUsers() {
         return repository.findAll()
                 .stream()
-                .map(u -> converter.getUserDto(u))
+                .map(converter::getUserDto)
                 .collect(Collectors.toList());
     }
 
