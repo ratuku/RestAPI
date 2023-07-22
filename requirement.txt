@@ -1,0 +1,58 @@
+Overview :
+You have been tasked with implementing a simple RESTful API using Spring Boot that exposes a set of endpoints for managing a user database. The API should be able to create, read, update, and delete user records from the database, as well as list all users.
+
+Your task is to implement the API according to the following requirements :
+
+The API should be implemented using Spring Boot and expose the endpoints through a RESTful interface.
+The user data should be stored in a MySQL database.
+The API should implement the Inversion of Control pattern using Spring's Dependency Injection framework.
+The API should use JPA for object-relational mapping and Hibernate as the JPA provider.
+The API should use Spring Data JPA to handle database interactions.
+The API should be packaged as a Docker container.
+The API should have unit tests to ensure that it works correctly.
+ Tasks :
+
+Create a Spring Boot project that includes the following dependencies:
+Spring Web
+Spring Data JPA
+MySQL Driver
+Hibernate
+Lombok
+Spring Boot Maven plugin
+
+
+Configure the project to connect to a MySQL database. Use the following connection details:
+
+Database name: userdb
+Database username: root
+Database password: password
+
+Create a User entity class with the following properties:
+id (long)
+firstName (String)
+lastName (String)
+email (String)
+
+Use JPA annotations to map the User entity to a MySQL database table called users.
+
+Create a UserRepository interface that extends JpaRepository<User, Long>.
+
+Implement a UserController class with the following endpoints:
+GET /users - returns a list of all users
+GET /users/{id} - returns the user with the specified id
+POST /users - creates a new user record based on the request body
+PUT /users/{id} - updates the user with the specified id based on the request body
+DELETE /users/{id} - deletes the user with the specified id
+
+Use constructor injection to inject the UserRepository into the UserController.
+
+Use annotations to indicate that the UserController is a Spring MVC controller and that its endpoints should be exposed through a RESTful interface.
+
+Create a Dockerfile that packages the Spring Boot application as a Docker container. Use the official OpenJDK 11 image as the base image for the container.
+
+Use Docker Compose to create a multi-container environment that includes the MySQL database and the Spring Boot application container.
+
+Write unit tests for the UserController to ensure that its endpoints work correctly.
+
+Use JUnit and Mockito to create and mock dependencies.
+Use a testing framework such as Maven Surefire to run the unit tests as part of the build process.

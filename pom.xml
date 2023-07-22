@@ -7,13 +7,13 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.1.2</version>
+        <version>2.7.14</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>org.cloud</groupId>
+    <groupId>org.cloud.tutorials</groupId>
     <artifactId>RestAPI</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <name>RestAPI</name>
     <description>Demo project for Spring Boot RestAPI with MySQL Database</description>
 
@@ -29,6 +29,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
