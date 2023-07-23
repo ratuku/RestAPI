@@ -48,7 +48,7 @@ public class UserService {
         Optional<User> userOptional = userRepository.findById(id);
 
         if (userOptional.isEmpty()) {
-            log.error(String.format("Failed to find user with ID: {} when trying to update the user", id));
+            log.error("Failed to find user with ID {} when trying to update the user", id);
             return Optional.empty();
         }
         else {
