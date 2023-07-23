@@ -3,6 +3,7 @@ package org.cloud.tutorials.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.cloud.tutorials.dto.UserDto;
 import org.cloud.tutorials.service.UserService;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -62,7 +63,12 @@ public class UserController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> removeUser(@PathVariable("id") Long id) {
-        userService.removeUser(id);
-        return new ResponseEntity<>(HttpStatus.OK);
+        try {
+            userService.removeUser(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (EmptyResultDataAccessException e) {
+            log.error(String.format("Failed to find user entity with ID %d, when trying to remove the user", id), e);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }

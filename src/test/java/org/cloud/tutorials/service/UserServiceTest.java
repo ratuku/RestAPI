@@ -15,7 +15,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.cloud.tutorials.CommonConstants.EMAIL;
 import static org.cloud.tutorials.CommonConstants.FIRST_NAME;
-import static org.cloud.tutorials.CommonConstants.ID;
 import static org.cloud.tutorials.CommonConstants.LAST_NAME;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;

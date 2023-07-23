@@ -3,6 +3,7 @@ package org.cloud.tutorials.utility.impl;
 import org.cloud.tutorials.dto.UserDto;
 import org.cloud.tutorials.model.User;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.cloud.tutorials.CommonConstants.EMAIL;
@@ -14,6 +15,7 @@ class EntityConverterImplTest {
     private final EntityConverterImpl entityConverter = new EntityConverterImpl();
 
     @Test
+    @DisplayName("Test that the class can map User to UserDto")
     void getUserDto() {
         User user = new User();
         user.setId(1L);
@@ -29,6 +31,7 @@ class EntityConverterImplTest {
     }
 
     @Test
+    @DisplayName("Test that the class can map UserDto to User")
     void getNewUser() {
         UserDto userDto = new UserDto(4L, FIRST_NAME, LAST_NAME, EMAIL);
 

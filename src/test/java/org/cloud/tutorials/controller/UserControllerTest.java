@@ -11,6 +11,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
@@ -26,6 +27,7 @@ import static org.cloud.tutorials.CommonConstants.LAST_NAME;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.doThrow;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
@@ -179,5 +181,14 @@ class UserControllerTest {
 
         mockMvc.perform(delete("/users/1"))
                 .andExpect(status().is(HttpStatus.OK.value()));
+    }
+
+    @Test
+    @DisplayName("Test that Http 404 is returned when a EmptyResultDataAccessException exception is thrown")
+    void removeUserThrowsAnException() throws Exception {
+        doThrow(new EmptyResultDataAccessException("No entitity found", 1)).when(userService).removeUser(1L);
+
+        mockMvc.perform(delete("/users/1"))
+                .andExpect(status().is(HttpStatus.NOT_FOUND.value()));
     }
 }
