@@ -12,11 +12,12 @@ import org.springframework.stereotype.Component;
 public class EntityConverterImpl implements EntityConverter {
 
     public UserDto getUserDto(User user) {
-        UserDto userDto = new UserDto();
-        userDto.setId(user.getId());
-        userDto.setFirstName(user.getFirstName());
-        userDto.setLastName(user.getLastName());
-        userDto.setEmail(user.getEmail());
+        UserDto userDto = new UserDto(
+                user.getId(),
+                user.getFirstName(),
+                user.getLastName(),
+                user.getEmail()
+        );
         return userDto;
     }
 
