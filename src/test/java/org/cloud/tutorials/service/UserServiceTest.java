@@ -13,6 +13,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import static org.cloud.tutorials.CommonConstants.EMAIL;
+import static org.cloud.tutorials.CommonConstants.FIRST_NAME;
+import static org.cloud.tutorials.CommonConstants.ID;
+import static org.cloud.tutorials.CommonConstants.LAST_NAME;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
@@ -30,9 +34,6 @@ class UserServiceTest {
     private UserService userService;
     private EntityConverter entityConverter;
     private List<User> userList;
-    private static final String FIRST_NAME = "testName";
-    private static final String LAST_NAME = "testSurname";
-    private static final String EMAIL = "testUser@gmail.com";
 
     @BeforeEach
     public void setup() {

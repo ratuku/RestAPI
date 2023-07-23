@@ -5,11 +5,12 @@ import org.cloud.tutorials.model.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.cloud.tutorials.CommonConstants.EMAIL;
+import static org.cloud.tutorials.CommonConstants.FIRST_NAME;
+import static org.cloud.tutorials.CommonConstants.LAST_NAME;
+
 class EntityConverterImplTest {
 
-    private static final String FIRST_NAME = "testName";
-    private static final String LAST_NAME = "testSurname";
-    private static final String EMAIL = "testUser@gmail.com";
     private final EntityConverterImpl entityConverter = new EntityConverterImpl();
 
     @Test
@@ -29,10 +30,10 @@ class EntityConverterImplTest {
 
     @Test
     void getNewUser() {
-        UserDto userDto = new UserDto(4l, FIRST_NAME, LAST_NAME, EMAIL);
+        UserDto userDto = new UserDto(4L, FIRST_NAME, LAST_NAME, EMAIL);
 
         User user = entityConverter.getNewUser(userDto);
-        Assertions.assertEquals(null, user.getId());
+        Assertions.assertNull(user.getId());
         Assertions.assertEquals(FIRST_NAME, user.getFirstName());
         Assertions.assertEquals(LAST_NAME, user.getLastName());
         Assertions.assertEquals(EMAIL, user.getEmail());
