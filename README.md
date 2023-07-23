@@ -9,3 +9,8 @@
 
 - Run `mvn clean package` in the root folder
 - Run `mvn springBoot:run` in the root folder
+
+## Improvement Items
+
+- Add Security (Authentication and Authorization). Maybe Oauth2 with JWT token.
+- Add pagination

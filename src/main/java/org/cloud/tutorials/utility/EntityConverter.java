@@ -1,10 +1,10 @@
 package org.cloud.tutorials.utility;
 
 import org.cloud.tutorials.dto.UserDto;
-import org.cloud.tutorials.entity.User;
+import org.cloud.tutorials.model.User;
 
 public interface EntityConverter {
     UserDto getUserDto(User user);
 
-    User getUser(UserDto userDto);
+    User getNewUser(UserDto userDto);
 }

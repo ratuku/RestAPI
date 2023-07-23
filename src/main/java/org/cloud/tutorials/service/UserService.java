@@ -3,10 +3,9 @@ package org.cloud.tutorials.service;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.cloud.tutorials.dto.UserDto;
-import org.cloud.tutorials.entity.User;
+import org.cloud.tutorials.model.User;
 import org.cloud.tutorials.repository.UserRepository;
 import org.cloud.tutorials.utility.EntityConverter;
-import org.cloud.tutorials.utility.impl.EntityConverterImpl;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -34,14 +33,22 @@ public class UserService {
     }
 
     public UserDto addUser(UserDto _userDto) {
-        User user = userRepository.save(entityConverter.getUser(_userDto));
+        User user = userRepository.save(entityConverter.getNewUser(_userDto));
         return entityConverter.getUserDto(user);
     }
 
+    /**
+     *
+     * @param id The user's id
+     * @param _userDto @{@code UserDto}
+     * @return Returns empty optional when the user was not found or Optional with UserDto when update succeeds
+     *
+     */
     public Optional<UserDto> updateUser(Long id, UserDto _userDto) {
         Optional<User> userOptional = userRepository.findById(id);
 
         if (userOptional.isEmpty()) {
+            log.error(String.format("Failed to find user with ID: {} when trying to update the user", id));
             return Optional.empty();
         }
         else {
@@ -49,7 +56,7 @@ public class UserService {
             user.setFirstName(_userDto.getFirstName());
             user.setLastName(_userDto.getLastName());
             user.setEmail(_userDto.getEmail());
-            return Optional.of(entityConverter.getUserDto(user));
+            return Optional.of(entityConverter.getUserDto(userRepository.save(user)));
         }
     }
 

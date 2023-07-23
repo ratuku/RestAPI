@@ -2,16 +2,17 @@ package org.cloud.tutorials.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
 import lombok.Data;
 
 @Data
 public class UserDto {
-    @NotNull
+
     private Long id;
-    @NotBlank
+    @NotBlank(message = "First name is required")
     private String firstName;
-    @NotBlank
+    @NotBlank(message = "Last name is required")
     private String lastName;
-    @NotBlank
+    @NotNull(message = "Email can't be null")
     private String email;
 }
